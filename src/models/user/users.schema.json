@@ -2,7 +2,6 @@
 	"type": "object",
 	"additionalProperties": false,
 	"required": [
-		"id",
 		"name",
 		"email",
 		"password",
@@ -25,7 +24,8 @@
 			"type": "string"
 		},
 		"poin": {
-			"type": "integer"
+			"type": "integer",
+			"default": 0
 		},
 		"province_id": {
 			"type": "string"

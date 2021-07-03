@@ -5,6 +5,10 @@ import morgan from 'morgan';
 import compression from 'compression';
 import { errorHandler, notFound } from './middlewares';
 
+import './db';
+
+import APIRoutes from './api';
+
 require('dotenv').config();
 
 const app = express();
@@ -17,6 +21,9 @@ app.use(express.json());
 app.get('/', (_req: Request, res: Response) => {
 	res.status(200).send('Hello World');
 });
+
+// route "{url}/api"
+app.use('/api', APIRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

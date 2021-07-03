@@ -3,7 +3,7 @@ import { Model } from 'objection';
 
 import jsonSchema from './admins.schema.json';
 
-export class User extends Model {
+export default class Admin extends Model {
 	id!: string;
 	name!: string;
 	email!: string;

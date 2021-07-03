@@ -11,7 +11,6 @@ export async function up(knex: Knex): Promise<void> {
 			.index()
 			.unique()
 			.notNullable()
-			.onDelete('cascade')
 			.defaultTo(uuidv4());
 		table.string('name').notNullable();
 		table.string('email').notNullable();
