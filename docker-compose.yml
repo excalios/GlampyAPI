@@ -1,0 +1,38 @@
+version: '3.7'
+services:
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - ./docker-data/db-data:/var/lib/postgresql/data:z
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - 5432:5432
+  adminer:
+    depends_on:
+      - db
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+  api:
+    build: .
+    restart: always
+    depends_on:
+      - db
+    user: node
+    volumes:
+      - ./:/usr/src/app:cached
+      - npm_cache:/root/.npm:delegated
+      - node_modules:/usr/src/app/node_modules:delegated
+    ports:
+      - ${PORT}:${PORT}
+    environment:
+      PORT: ${PORT}
+
+volumes:
+  npm_cache:
+  node_modules:
