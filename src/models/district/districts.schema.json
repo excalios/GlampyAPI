@@ -1,0 +1,16 @@
+{
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["regency_id", "name"],
+	"properties": {
+		"id": {
+			"type": "string"
+		},
+		"regency_id": {
+			"type": "string"
+		},
+		"name": {
+			"type": "string"
+		}
+	}
+}

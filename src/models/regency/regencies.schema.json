@@ -1,0 +1,16 @@
+{
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["province_id", "name"],
+	"properties": {
+		"id": {
+			"type": "string"
+		},
+		"province_id": {
+			"type": "string"
+		},
+		"name": {
+			"type": "string"
+		}
+	}
+}
