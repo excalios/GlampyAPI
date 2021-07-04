@@ -6,6 +6,9 @@ import ProductFacility from '../product_facility/product_facilities.model';
 import ProductCustomFacility from '../product_custom_facility/product_custom_facilities.model';
 
 import jsonSchema from './products.schema.json';
+import Province from '../province/provinces.model';
+import Regency from '../regency/regencies.model';
+import District from '../district/districts.model';
 
 export default class Product extends Model {
 	id!: string;
@@ -30,6 +33,30 @@ export default class Product extends Model {
 			join: {
 				from: `${tableNames.product}.id`,
 				to: `${tableNames.product_variation}.product_id`,
+			},
+		},
+		province: {
+			relation: Model.BelongsToOneRelation,
+			modelClass: Province,
+			join: {
+				from: `${tableNames.product}.province_id`,
+				to: `${tableNames.province}.id`,
+			},
+		},
+		regency: {
+			relation: Model.BelongsToOneRelation,
+			modelClass: Regency,
+			join: {
+				from: `${tableNames.product}.regency_id`,
+				to: `${tableNames.regency}.id`,
+			},
+		},
+		district: {
+			relation: Model.BelongsToOneRelation,
+			modelClass: District,
+			join: {
+				from: `${tableNames.product}.district_id`,
+				to: `${tableNames.district}.id`,
 			},
 		},
 		images: {
