@@ -2,7 +2,7 @@ import tableNames from '@src/constants/tableNames';
 import { Model } from 'objection';
 import Product from '../product/products.model';
 import ProductImage from '../product_image/product_images.model';
-import ProductFacility from '../product_facility/product_facilities.model';
+import Facility from '../facility/facilities.model';
 import ProductCustomFacility from '../product_custom_facility/product_custom_facilities.model';
 
 import jsonSchema from './product_variations.schema.json';
@@ -37,9 +37,9 @@ export default class ProductVariation extends Model {
 				to: `${tableNames.product_image}.product_id`,
 			},
 		},
-		facilites: {
+		facilities: {
 			relation: Model.ManyToManyRelation,
-			modelClass: ProductFacility,
+			modelClass: Facility,
 			join: {
 				from: `${tableNames.product_variation}.id`,
 				through: {

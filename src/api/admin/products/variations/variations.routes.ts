@@ -35,7 +35,10 @@ router.post(
 	async (req: Request, res: Response, next: NextFunction) => {
 		try {
 			const variation: ProductVariation = await ProductVariation.query().insert(
-				req.body
+				{
+					...req.body,
+					product_id: req.params.product_id,
+				}
 			);
 
 			res.status(200).json({

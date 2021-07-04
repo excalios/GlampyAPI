@@ -36,7 +36,7 @@ export default class ProductCustomFacility extends Model {
 			modelClass: FacilityImage,
 			join: {
 				from: `${tableNames.product_custom_facility}.id`,
-				to: `${tableNames.facility_image}.product_custom_facility_id`,
+				to: `${tableNames.facility_image}.custom_facility_id`,
 			},
 		},
 	});

@@ -9,6 +9,7 @@ import jsonSchema from './products.schema.json';
 import Province from '../province/provinces.model';
 import Regency from '../regency/regencies.model';
 import District from '../district/districts.model';
+import Facility from '../facility/facilities.model';
 
 export default class Product extends Model {
 	id!: string;
@@ -67,9 +68,9 @@ export default class Product extends Model {
 				to: `${tableNames.product_image}.product_id`,
 			},
 		},
-		facilites: {
+		facilities: {
 			relation: Model.ManyToManyRelation,
-			modelClass: ProductFacility,
+			modelClass: Facility,
 			join: {
 				from: `${tableNames.product}.id`,
 				through: {
