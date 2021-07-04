@@ -1,16 +1,16 @@
 import tableNames from '@src/constants/tableNames';
 import { Model } from 'objection';
 import Product from '../product/products.model';
-import ProductVariation from '../product_variation/product_variations.model';
+import Facility from '../facility/facilities.model';
 
 import jsonSchema from './product_facilities.schema.json';
 
 export default class ProductFacility extends Model {
 	id!: string;
-	name!: string;
-	icon!: string;
+	product_id!: string;
+	facility_id!: string;
 
-	static tableName = tableNames.facility;
+	static tableName = tableNames.product_facility;
 	static jsonSchema = jsonSchema;
 
 	static relationMappings = () => ({
@@ -18,24 +18,16 @@ export default class ProductFacility extends Model {
 			relation: Model.BelongsToOneRelation,
 			modelClass: Product,
 			join: {
-				from: `${tableNames.facility}.id`,
-				through: {
-					from: `${tableNames.product_facility}.facility_id`,
-					to: `${tableNames.product_facility}.product_id`,
-				},
+				from: `${tableNames.product_facility}.product_id`,
 				to: `${tableNames.product}.id`,
 			},
 		},
-		variation: {
+		facility: {
 			relation: Model.BelongsToOneRelation,
-			modelClass: ProductVariation,
+			modelClass: Facility,
 			join: {
-				from: `${tableNames.facility}.id`,
-				through: {
-					from: `${tableNames.product_facility}.facility_id`,
-					to: `${tableNames.product_facility}.product_id`,
-				},
-				to: `${tableNames.product_variation}.id`,
+				from: `${tableNames.product_facility}.facility_id`,
+				to: `${tableNames.facility}.id`,
 			},
 		},
 	});

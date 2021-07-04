@@ -1,15 +1,15 @@
 {
 	"type": "object",
 	"additionalProperties": false,
-	"required": ["product_id", "facility_id"],
+	"required": ["name", "icon"],
 	"properties": {
 		"id": {
 			"type": "string"
 		},
-		"product_id": {
+		"name": {
 			"type": "string"
 		},
-		"facility_id": {
+		"icon": {
 			"type": "string"
 		}
 	}

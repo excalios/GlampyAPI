@@ -3,17 +3,14 @@ import { Model } from 'objection';
 import Product from '../product/products.model';
 import ProductVariation from '../product_variation/product_variations.model';
 
-import jsonSchema from './product_images.schema.json';
+import jsonSchema from './facilities.schema.json';
 
-export default class ProductImage extends Model {
+export default class Facility extends Model {
 	id!: string;
-	product_id!: string;
-	title!: string;
-	description?: string;
-	image!: string;
-	is_variation?: boolean;
+	name!: string;
+	icon!: string;
 
-	static tableName = tableNames.product_image;
+	static tableName = tableNames.facility;
 	static jsonSchema = jsonSchema;
 
 	static relationMappings = () => ({
@@ -21,7 +18,11 @@ export default class ProductImage extends Model {
 			relation: Model.BelongsToOneRelation,
 			modelClass: Product,
 			join: {
-				from: `${tableNames.product_image}.product_id`,
+				from: `${tableNames.facility}.id`,
+				through: {
+					from: `${tableNames.product_facility}.facility_id`,
+					to: `${tableNames.product_facility}.product_id`,
+				},
 				to: `${tableNames.product}.id`,
 			},
 		},
@@ -29,7 +30,11 @@ export default class ProductImage extends Model {
 			relation: Model.BelongsToOneRelation,
 			modelClass: ProductVariation,
 			join: {
-				from: `${tableNames.product_image}.product_id`,
+				from: `${tableNames.facility}.id`,
+				through: {
+					from: `${tableNames.product_facility}.facility_id`,
+					to: `${tableNames.product_facility}.product_id`,
+				},
 				to: `${tableNames.product_variation}.id`,
 			},
 		},

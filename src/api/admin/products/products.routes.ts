@@ -1,6 +1,10 @@
 import Product from '@src/models/product/products.model';
 import { NextFunction, Request, Response, Router } from 'express';
 
+import VariationRoutes from './variations/variations.routes';
+import ImageRoutes from './images/images.routes';
+import FacilityRoutes from './facilities/facilities.routes';
+import CustomFacilityRoutes from './custom_facilities/custom_facilities.routes';
 const router = Router();
 
 /**
@@ -40,5 +44,10 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
 		next(err);
 	}
 });
+
+router.use('/', VariationRoutes);
+router.use('/', ImageRoutes);
+router.use('/', FacilityRoutes);
+router.use('/', CustomFacilityRoutes);
 
 export default router;
