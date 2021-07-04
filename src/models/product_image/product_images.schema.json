@@ -1,0 +1,25 @@
+{
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["product_id", "title", "description", "image", "is_variation"],
+	"properties": {
+		"id": {
+			"type": "string"
+		},
+		"product_id": {
+			"type": "string"
+		},
+		"title": {
+			"type": "string"
+		},
+		"description": {
+			"type": "string"
+		},
+		"image": {
+			"type": "string"
+		},
+		"is_variation": {
+			"type": "boolean"
+		}
+	}
+}

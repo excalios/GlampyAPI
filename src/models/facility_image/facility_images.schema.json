@@ -1,0 +1,22 @@
+{
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["custom_facility_id", "title", "description", "image"],
+	"properties": {
+		"id": {
+			"type": "string"
+		},
+		"custom_facility_id": {
+			"type": "string"
+		},
+		"title": {
+			"type": "string"
+		},
+		"description": {
+			"type": "string"
+		},
+		"image": {
+			"type": "string"
+		}
+	}
+}

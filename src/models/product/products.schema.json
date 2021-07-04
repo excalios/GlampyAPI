@@ -1,0 +1,51 @@
+{
+	"type": "object",
+	"additionalProperties": false,
+	"required": [
+		"title",
+		"description",
+		"price",
+		"province_id",
+		"regency_id",
+		"district_id",
+		"address",
+		"min_occupation",
+		"max_occupation",
+		"available_product"
+	],
+	"properties": {
+		"id": {
+			"type": "string"
+		},
+		"title": {
+			"type": "string"
+		},
+		"description": {
+			"type": "string"
+		},
+		"price": {
+			"type": "integer"
+		},
+		"province_id": {
+			"type": "string"
+		},
+		"regency_id": {
+			"type": "string"
+		},
+		"district_id": {
+			"type": "string"
+		},
+		"address": {
+			"type": "string"
+		},
+		"min_occupation": {
+			"type": "integer"
+		},
+		"max_occupation": {
+			"type": "integer"
+		},
+		"available_product": {
+			"type": "integer"
+		}
+	}
+}

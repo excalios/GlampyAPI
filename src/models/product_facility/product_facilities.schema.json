@@ -1,0 +1,16 @@
+{
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["name", "icon"],
+	"properties": {
+		"id": {
+			"type": "string"
+		},
+		"name": {
+			"type": "string"
+		},
+		"icon": {
+			"type": "string"
+		}
+	}
+}

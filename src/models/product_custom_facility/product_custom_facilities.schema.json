@@ -1,0 +1,16 @@
+{
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["product_id", "name"],
+	"properties": {
+		"id": {
+			"type": "string"
+		},
+		"product_id": {
+			"type": "string"
+		},
+		"name": {
+			"type": "string"
+		}
+	}
+}

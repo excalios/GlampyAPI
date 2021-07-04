@@ -1,0 +1,35 @@
+{
+	"type": "object",
+	"additionalProperties": false,
+	"required": [
+		"title",
+		"description",
+		"price",
+		"min_occupation",
+		"max_occupation",
+		"available_product"
+	],
+	"properties": {
+		"id": {
+			"type": "string"
+		},
+		"title": {
+			"type": "string"
+		},
+		"description": {
+			"type": "string"
+		},
+		"price": {
+			"type": "integer"
+		},
+		"min_occupation": {
+			"type": "integer"
+		},
+		"max_occupation": {
+			"type": "integer"
+		},
+		"available_product": {
+			"type": "integer"
+		}
+	}
+}
