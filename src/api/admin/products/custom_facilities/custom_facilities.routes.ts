@@ -1,6 +1,7 @@
 import ProductCustomFacility from '@src/models/product_custom_facility/product_custom_facilities.model';
 import { NextFunction, Request, Response, Router } from 'express';
 
+import ImageRouter from './facility_images/facility_images.routes';
 const router = Router();
 
 /**
@@ -48,5 +49,7 @@ router.post(
 		}
 	}
 );
+
+router.use('/:product_id/custom_facilities/', ImageRouter);
 
 export default router;

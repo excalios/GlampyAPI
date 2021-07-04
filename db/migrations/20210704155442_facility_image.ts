@@ -11,7 +11,12 @@ export async function up(knex: Knex): Promise<void> {
 			.unique()
 			.notNullable()
 			.defaultTo(knex.raw('gen_random_uuid()'));
-		table.uuid(`${tableNames.product}_id`).notNullable();
+		table
+			.uuid(`custom_facility_id`)
+			.notNullable()
+			.references('id')
+			.inTable(tableNames.product_custom_facility)
+			.onDelete('cascade');
 		table.string('title').notNullable();
 		table.text('description').notNullable();
 		table.string('image').notNullable();

@@ -1,5 +1,6 @@
 import tableNames from '@src/constants/tableNames';
 import { Model } from 'objection';
+import FacilityImage from '../facility_image/facility_images.model';
 import Product from '../product/products.model';
 import ProductVariation from '../product_variation/product_variations.model';
 
@@ -28,6 +29,14 @@ export default class ProductCustomFacility extends Model {
 			join: {
 				from: `${tableNames.product_custom_facility}.product_id`,
 				to: `${tableNames.product_variation}.id`,
+			},
+		},
+		images: {
+			relation: Model.HasManyRelation,
+			modelClass: FacilityImage,
+			join: {
+				from: `${tableNames.product_custom_facility}.id`,
+				to: `${tableNames.facility_image}.product_custom_facility_id`,
 			},
 		},
 	});
