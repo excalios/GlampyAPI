@@ -9,9 +9,10 @@ export default class User extends Model {
 	email!: string;
 	password?: string;
 	poin?: number;
-	province_id?: number;
-	regency_id?: number;
-	district_id?: number;
+	province_id?: string;
+	regency_id?: string;
+	district_id?: string;
+	vaccine_certificate?: string;
 
 	static tableName = tableNames.user;
 	static jsonSchema = jsonSchema;

@@ -34,6 +34,7 @@ export async function up(knex: Knex): Promise<void> {
 			.inTable(tableNames.district)
 			.notNullable()
 			.onDelete('cascade');
+		table.string('vaccine_certificate').nullable();
 	});
 }
 

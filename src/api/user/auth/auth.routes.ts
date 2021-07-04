@@ -5,8 +5,25 @@ import * as yup from 'yup';
 import bcrypt from 'bcrypt';
 import jwt from '@src/lib/jwt';
 import { Roles } from '@src/middlewares';
+import setting from '@src/../setting';
+import multer from 'multer';
+import mime from 'mime-types';
 
 const router = Router();
+
+// Where to save the certificates and set the filename
+const storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, setting.PROJECT_DIR + '/public/certificates');
+	},
+	filename: (req, file, cb) => {
+		const fileName: string = req.body.name.replace(/[^\w\d]/g, '');
+		const ext = mime.extension(file.mimetype);
+		cb(null, fileName + '-' + file.fieldname + '-' + Date.now() + '.' + ext);
+	},
+});
+
+const upload = multer({ storage });
 
 /**
  * POST /api/user/auth/signup
@@ -14,6 +31,7 @@ const router = Router();
  */
 router.post(
 	'/signup',
+	upload.single('vaccine_certificate'),
 	async (req: Request, res: Response, next: NextFunction) => {
 		try {
 			const signupSchema = yup.object().shape({
@@ -23,7 +41,13 @@ router.post(
 				province_id: yup.string().required(),
 				regency_id: yup.string().required(),
 				district_id: yup.string().required(),
+				vaccine_certificate: yup.mixed().required(),
 			});
+
+			req.body.vaccine_certificate = req.file?.path.replace(
+				setting.PROJECT_DIR,
+				''
+			);
 
 			await signupSchema
 				.validate(req.body, { abortEarly: false })

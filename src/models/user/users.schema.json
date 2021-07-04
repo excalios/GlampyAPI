@@ -35,6 +35,9 @@
 		},
 		"district_id": {
 			"type": "string"
+		},
+		"vaccine_certificate": {
+			"type": "string"
 		}
 	}
 }
