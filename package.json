@@ -6,7 +6,10 @@
 	"main": "src/index.ts",
 	"scripts": {
 		"start": "ts-node src/index.ts",
-		"dev": "nodemon src/index.ts"
+		"dev": "nodemon src/index.ts",
+		"migrate": "knex migrate:latest",
+		"rollback": "knex migrate:rollback",
+		"seed": "knex seed:run"
 	},
 	"repository": {
 		"type": "git",
