@@ -1,7 +1,6 @@
 import * as Knex from 'knex';
 
 import tableNames from '../../src/constants/tableNames';
-import { v4 as uuidv4 } from 'uuid';
 
 export async function up(knex: Knex): Promise<void> {
 	return knex.schema.createTable(tableNames.facility_image, (table) => {
@@ -11,7 +10,7 @@ export async function up(knex: Knex): Promise<void> {
 			.index()
 			.unique()
 			.notNullable()
-			.defaultTo(uuidv4());
+			.defaultTo(knex.raw('gen_random_uuid()'));
 		table.uuid(`${tableNames.product}_id`).notNullable();
 		table.string('title').notNullable();
 		table.text('description').notNullable();
