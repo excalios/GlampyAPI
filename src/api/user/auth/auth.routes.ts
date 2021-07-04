@@ -139,7 +139,7 @@ router.post(
 
 			const token: string = await jwt({
 				user: user,
-				roles: Roles.User,
+				role: Roles.User,
 			});
 
 			res.status(200).json({
