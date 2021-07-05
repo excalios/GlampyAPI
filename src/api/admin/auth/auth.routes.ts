@@ -52,7 +52,9 @@ router.post(
 			delete user.password;
 
 			const token: string = await jwt({
-				user: user,
+				id: user.id,
+				email: user.email,
+				name: user.name,
 				role: Roles.Admin,
 			});
 

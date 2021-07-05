@@ -3,7 +3,7 @@ import express, { Request, Response } from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import compression from 'compression';
-import { errorHandler, notFound } from './middlewares';
+import { errorHandler, notFound, Roles } from './middlewares';
 
 import './db';
 
@@ -12,6 +12,25 @@ import APIRoutes from './api';
 require('dotenv').config();
 
 const app = express();
+
+interface UserData {
+	id: string;
+	email: string;
+	name: string;
+	poin: number;
+	role: Roles;
+}
+
+// Add token and userData to Request
+// So we can call req.token and req.userData
+declare global {
+	namespace Express {
+		export interface Request {
+			token: string;
+			userData: UserData;
+		}
+	}
+}
 
 app.use(compression());
 app.use(helmet());

@@ -11,4 +11,5 @@ export default {
 	facility: 'facility',
 	product_custom_facility: 'product_custom_facility',
 	facility_image: 'facility_image',
+	product_order: 'product_order',
 };

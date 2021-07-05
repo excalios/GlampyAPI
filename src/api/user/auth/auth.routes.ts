@@ -75,8 +75,11 @@ router.post(
 			delete registeredUser.password;
 
 			const token: string = await jwt({
-				user: registeredUser,
-				roles: Roles.User,
+				id: registeredUser.id,
+				email: registeredUser.email,
+				name: registeredUser.name,
+				poin: registeredUser.poin,
+				role: Roles.User,
 			});
 
 			res.status(200).json({
@@ -138,7 +141,10 @@ router.post(
 			delete user.password;
 
 			const token: string = await jwt({
-				user: user,
+				id: user.id,
+				email: user.email,
+				name: user.name,
+				poin: user.poin,
 				role: Roles.User,
 			});
 
