@@ -32,7 +32,7 @@ router.get(
 			const product: Product = await Product.query()
 				.findOne('product.id', req.params.product_id)
 				.withGraphJoined(
-					'[province, regency, variations.[facilities, custom_facilities.[images], images], facilities, custom_facilities.[images], images]'
+					'[province, regency, variations.[facilities, custom_facilities.[images], images], facilities, custom_facilities.[images], images, reviews]'
 				);
 
 			res.status(200).json({

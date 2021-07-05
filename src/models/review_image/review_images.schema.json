@@ -1,0 +1,16 @@
+{
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["review_id", "image"],
+	"properties": {
+		"id": {
+			"type": "string"
+		},
+		"review_id": {
+			"type": "string"
+		},
+		"image": {
+			"type": "string"
+		}
+	}
+}

@@ -10,6 +10,7 @@ import Province from '../province/provinces.model';
 import Regency from '../regency/regencies.model';
 import District from '../district/districts.model';
 import Facility from '../facility/facilities.model';
+import Review from '../review/review.model';
 
 export default class Product extends Model {
 	id!: string;
@@ -86,6 +87,14 @@ export default class Product extends Model {
 			join: {
 				from: `${tableNames.product}.id`,
 				to: `${tableNames.product_custom_facility}.product_id`,
+			},
+		},
+		reviews: {
+			relation: Model.HasManyRelation,
+			modelClass: Review,
+			join: {
+				from: `${tableNames.product}.id`,
+				to: `${tableNames.review}.product_id`,
 			},
 		},
 	});
